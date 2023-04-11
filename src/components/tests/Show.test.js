@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import userEvent from '@testing-library/user-event'
 import Show from './../Show';
@@ -37,14 +37,16 @@ test('renders same number of options seasons are passed in', () => {
     expect(seasonOptions).toHaveLength(2)
 });
 
-test('handleSelect is called when an season is selected', () => { 
+test('handleSelect is called when a season is selected', () => { 
     const handleSelect = jest.fn();
     render(<Show show={testShow} selectedSeason={'none'} handleSelect={handleSelect} />);
     const select = screen.getByLabelText(/Select A Season/i);
     console.log(select);
+    // fireEvent.select(select, ['1']);
     userEvent.selectOptions(select, ['1']);
     
     // expect(handleSelect).toBeCalled();
+    // expect(handleSelect).toHaveBeenCalled();
 });
 
 test('component renders when no seasons are selected and when rerenders with a season passed in', () => { 
