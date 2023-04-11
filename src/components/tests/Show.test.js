@@ -45,7 +45,7 @@ test('handleSelect is called when a season is selected', () => {
     // fireEvent.select(select, ['1']);
     userEvent.selectOptions(select, ['1']);
     
-    // expect(handleSelect).toBeCalled();
+    expect(handleSelect).toBeCalled();
     // expect(handleSelect).toHaveBeenCalled();
 });
 
