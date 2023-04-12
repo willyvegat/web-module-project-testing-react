@@ -37,13 +37,15 @@ test('renders same number of options seasons are passed in', () => {
     expect(seasonOptions).toHaveLength(2)
 });
 
-test('handleSelect is called when a season is selected', () => { 
+test('handleSelect is called when a season is selected', async () => { 
     const handleSelect = jest.fn();
+    const user = userEvent.setup();
     render(<Show show={testShow} selectedSeason={'none'} handleSelect={handleSelect} />);
     const select = screen.getByLabelText(/Select A Season/i);
-    console.log(select);
+    // console.log(select);
     // fireEvent.select(select, ['1']);
-    userEvent.selectOptions(select, ['1']);
+    
+    await user.selectOptions(select, ['1']);
     
     expect(handleSelect).toBeCalled();
     // expect(handleSelect).toHaveBeenCalled();
